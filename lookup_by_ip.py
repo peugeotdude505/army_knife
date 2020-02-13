@@ -7,13 +7,13 @@ output = open('hostnames_output.txt',"w+")
 with open('hostnames_list.txt') as f:
     for ipadd in f:
         try:
+            host = (ipadd.split())
+            ipv4 = host[0] 
             info = socket.gethostbyaddr(ipadd)
-            line = str(info[2]).strip('[]') + '  ' +str(info[0])
+            line = str(ipv4 + '  ' +str(info[0]))
             
         except socket.herror:
-            x = (ipadd.split())
-            ipv4 = x[0] 
-            line = (ipv4 + " No DNS record was found ")
+            line = (ipv4 + "  No DNS record was found ")
             print(line)
         
         except socket.gaierror:
